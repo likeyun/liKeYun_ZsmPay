@@ -63,4 +63,5 @@ TANKING
 赞赏
 ---
 如果你喜欢我的作品，请给予一些支持！
-<img src="https://t.focus-img.cn/sh740wsh/bbs/p2/25b4c4dc3a50be9b6f2c9a4ffe68deba.png" />
+
+![image.png](https://t.focus-img.cn/sh740wsh/bbs/p2/25b4c4dc3a50be9b6f2c9a4ffe68deba.png)
