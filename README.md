@@ -59,3 +59,8 @@ TANKING
 加入开发者交流群
 ---
 请联系微信：sansure2016 即可加入我的开发者交流群，目前已有5个群，每个群人数均400+，属于高质量活跃群！
+
+赞赏
+---
+如果你喜欢我的作品，请给予一些支持！
+<img src="https://t.focus-img.cn/sh740wsh/bbs/p2/25b4c4dc3a50be9b6f2c9a4ffe68deba.png" />
