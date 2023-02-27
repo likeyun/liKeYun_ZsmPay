@@ -65,3 +65,10 @@ TANKING
 如果你喜欢我的作品，请给予一些支持！
 
 ![image.png](https://t.focus-img.cn/sh740wsh/bbs/p2/25b4c4dc3a50be9b6f2c9a4ffe68deba.png)
+
+另一个版本
+---
+
+微信收款商业版收款码支付回调Demo：https://likeyun.lanzout.com/iLqFN0op8fib<br/><br/>
+
+这个版本使用的是微信收款商业版的收款码的。
