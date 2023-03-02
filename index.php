@@ -7,7 +7,7 @@
 	<meta charset="utf-8">
 	<script src="./js/jquery.min.js"></script>
 	<link rel="stylesheet" href="./css/style.css">
-	<title>微信收款商业版支付实现原理Demo</title>
+	<title>微信收款商业版支付实现原理Demo（版本号：1.0.1）</title>
 </head>
 
 <body>
