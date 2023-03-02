@@ -7,13 +7,16 @@
 	<meta charset="utf-8">
 	<script src="./js/jquery.min.js"></script>
 	<link rel="stylesheet" href="./css/style.css">
-	<title>微信赞赏码免签约支付实现原理Demo</title>
+	<title>微信收款商业版支付实现原理Demo</title>
 </head>
 
-<body onload="clock(120)">
+<body>
     
     <?php
-    
+        
+        // 北京时区
+        date_default_timezone_set('PRC');
+        
         // 数据库配置
     	include './Db.php';
     	
@@ -27,7 +30,7 @@
         $order_price = 0.01;
     	
     	// 获取未支付订单列表
-        $getOrderList = $db->set_table('mqpay_order')->findAll(['order_status' => 1]);
+        $getOrderList = $db->set_table('syskm_order')->findAll(['order_status' => 1]);
         
         // 遍历订单
         $orderNoExpire = array();
@@ -40,7 +43,7 @@
             $order_money = json_decode(json_encode($getOrderList[$i]))->order_money;
             
             // 获取2分钟未支付的订单
-            if(countTimes(time(),strtotime($order_time)) <= 2){
+            if(countTimes(time(),$order_time) <= 2){
                 
                 // 如果存在
                 $orderNoExpire[] = $order_money;
@@ -54,14 +57,36 @@
             $needPay = $order_price;
         }else{
             
-            // 获取2分钟未支付的订单的最大金额+0.01
-            $needPay = max($orderNoExpire) + 0.01;
+            // 获取2分钟未支付的订单的最小金额-0.01
+            $needPay_min = min($orderNoExpire) - 0.01;
+            
+            // 如果最小金额-0.01小于订单价格则获取2分钟未支付的订单的最大金额+0.01
+            if($needPay_min <= $order_price){
+                
+                $needPay = max($orderNoExpire) + 0.01;
+            }else{
+                
+                // 否则使用最小金额-0.01
+                $needPay = $needPay_min;
+            }
             
         }
         
-        // 创建订单
-        creatOrder($order_num,$order_price,$needPay,$db);
-        
+        // 先判断未支付订单量是否超过10个
+        if(count($orderNoExpire) >= 10){
+            
+            // 超过10个订单未支付
+            echo '<div class="payInfoCard">
+                <div class="header">里客云科技</div>
+                <div class="moneyCard" style="padding:20px 20px;">
+                    当前支付人数过多，请稍等再刷新页面！
+                </div>
+            </div>';
+        }else{
+            
+            // 创建订单
+            creatOrder($order_num,$order_price,$needPay,$db);
+        }
         
         // 创建订单
         function creatOrder($order_num,$order_price,$needPay,$db){
@@ -69,12 +94,13 @@
             // 订单参数
             $createOrder = [
                 'order_num' => $order_num,
+                'order_time' => time(),
                 'order_price' => $order_price,
                 'order_money' => $needPay,
             ];
             
             // 创建
-            $createOrderResult = $db->set_table('mqpay_order')->add($createOrder);
+            $createOrderResult = $db->set_table('syskm_order')->add($createOrder);
             if($createOrderResult){
                 
                 // 成功
@@ -84,10 +110,9 @@
             	        <div class="text">支付金额</div>
             	        <div class="money"><span class="rmb">¥</span>'.$needPay.'</div>
             	        <!--二维码-->
-            	        <img src="./img/zsm.jpg" id="zsmQrcode" class="zsmQrcode" />
+            	        <img src="./img/skm.jpg" id="zsmQrcode" class="zsmQrcode" />
             	        <!--<button class="payBtn" onclick="createOrder();">确认支付'.$needPay.'元</button>-->
-            	        <p class="payWarning">请识别上方赞赏码</p>
-            	        <p class="payWarning">点击<span class="blueFont">其他金额</span>输入'.$needPay.'元</p>
+            	        <p class="payWarning">请识别上方收款码输入'.$needPay.'元</p>
             	        <p class="payWarningMini">输入的金额必须要完全一致</p>
             	        <p id="orderExpireTime"></p>
             	        <p id="orderNum" style="display:none;">'.$order_num.'</p>
@@ -147,10 +172,17 @@
                     // 判断支付结果
                     if(res.code == 200){
                         
-                        console.log('支付成功');
-                        $("#zsmQrcode").prop("src","./img/success.png");
-                        $('#orderExpireTime').css('display','none');
+                        // 停止计时
+                        clearInterval(orderExpireTime);
+                
+                        // 停止轮询支付结果
                         clearInterval(checkPayInterval);
+                        
+                        $("#zsmQrcode").prop("src","./img/success.png");
+                        $('#orderExpireTime').text('支付成功');
+                        console.log('订单已支付');
+                        console.log('停止计时');
+                        console.log('停止轮询支付结果');
   
                     }else{
                         
@@ -161,34 +193,44 @@
         }
         
         // 倒计时
-        function clock(times){
+        // 单位：秒
+        var t = 120; // 120秒=2分钟
+        var orderExpireTime = setInterval(function(){
             
-            // 获取时分秒
-            var h=parseInt(times/3600);
-            var m=parseInt((times%3600)/60);
-            var s=(times%3600)%60;
+            t --;
+            var s = parseInt(t /3600 );
+            var f = parseInt((t % 3600) / 60);
+            var m = t % 60;
             
-            // 在页面中显示倒计时
-            $('#orderExpireTime').html(m+"分"+s+"秒后过期");
-            
-            // 倒计时
-            if(times > 0){
-                times = times-1;
-                setTimeout(function (){
-                    clock(times);
-                }, 1000);
-            }else{
+            // 渲染到页面
+            $('#orderExpireTime').html(format(f)+':'+format(m));
+     
+            if (t == 0){
+                
+                // 停止计时
+                clearInterval(orderExpireTime);
+                
+                // 停止轮询支付结果
+                clearInterval(checkPayInterval);
                 
                 // 显示订单过期
                 $("#zsmQrcode").prop("src","./img/expire.png");
                 $('#orderExpireTime').text('订单已过期，请刷新页面！');
-                
-                // 结束轮询
-                clearInterval(checkPayInterval);
-                
-                console.log('订单过期，停止监听');
+                console.log('订单已过期');
+                console.log('停止计时');
+                console.log('停止轮询支付结果');
             }
+            
+        }, 1000);
+
+        // 格式化时间
+        function format(num){
+            if (num < 10) {
+                return '0' + num;
+            }
+            return '' + num;
         }
+        
     </script>
 </body>
 

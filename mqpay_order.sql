@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主机： localhost
--- 生成日期： 2023-02-25 15:01:02
+-- 生成日期： 2023-03-02 10:58:47
 -- 服务器版本： 5.7.34-log
 -- PHP 版本： 7.4.27
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `mqpay_order` (
   `id` int(5) NOT NULL COMMENT 'id',
   `order_num` varchar(32) DEFAULT NULL COMMENT '订单号',
-  `order_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `order_time` varchar(32) DEFAULT NULL COMMENT '创建时间',
   `order_price` varchar(10) DEFAULT NULL COMMENT '订单价格（真实价格）',
   `order_money` varchar(10) DEFAULT NULL COMMENT '订单价格（支付金额）',
   `order_paytime` varchar(32) DEFAULT NULL COMMENT '支付时间',
