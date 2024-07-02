@@ -26,7 +26,7 @@ https://www.qq.com/pay/server/notify.php
 监听APP下载
 ---
 开源地址：https://gitee.com/pp/SmsForwarder <br>
-网盘：https://wws.lanzoui.com/b025yl86h 访问密码：pppscn <br>
+网盘(访问密码：pppscn)：https://wws.lanzoui.com/b025yl86h <br>
 （建议下载3.2.0版本）
 
 监听APP配置
