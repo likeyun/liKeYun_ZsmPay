@@ -23,6 +23,10 @@ notify.php是回调监听的重要程序，这个文件在server目录内，你�
 ```
 https://www.qq.com/pay/server/notify.php
 ```
+监听APP下载
+---
+开源地址：https://gitee.com/pp/SmsForwarder <br>
+网盘：https://wws.lanzoui.com/b025yl86h 访问密码：pppscn（建议下载3.2.0版本）
 
 监听APP配置
 ---
@@ -89,8 +93,6 @@ CREATE TABLE `wxpay_zsm_orders` (
 4、修改Db.php里面的数据库配置信息；
 5、数据库创建；
 6、进入img目录替换qrcode.png赞赏码
------------
-监听器APP开源地址及安装包下载地址：https://gitee.com/pp/SmsForwarder
 ```
 
 在线演示
