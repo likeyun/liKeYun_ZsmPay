@@ -29,7 +29,14 @@ https://www.qq.com/pay/server/notify.php
 
 **发送通道配置：**
 
-打开APP，选择**【发送通道】**点击**【Webhook】**，选择**【GET请求】** ，输入 **`notify.php`** 所在服务器的URL，下面的参数填写 `orderMsg=[msg]&time=[timestamp]&sign=[sign]` ，`Secret` 需要和上一步的 `SecretKey` 一致。
+打开APP，选择发送通道->Webhook->选择GET请求->输入notify.php所在服务器的URL。
+
+消息模板填写以下参数：
+```
+orderMsg=[msg]&time=[timestamp]&sign=[sign]
+```
+
+`Secret` 需要和上一步的 `SecretKey` 一致。
 
 ![](https://img10.360buyimg.com/imgzone/jfs/t1/234778/20/23066/61303/66838b52F2a954ec2/731c238b2796526d.jpg)
 
