@@ -1,0 +1,217 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+body {
+    background: #edf2f7;
+}
+[v-cloak] {
+    display: none;
+}
+/*PAD-PC*/
+@media screen and (min-width: 640px) and (max-width: 2000px) {
+    .order {
+        width: 600px;
+        margin: 50px auto 0;
+        background: #fff;
+        border-radius: 5px;
+        padding: 0 30px;
+        border: 1px solid #b6c6d8;
+    }
+    .header {
+        width: 100%;
+        font-size: 22px;
+        border-bottom: 1px solid #eee;
+        padding: 20px 0;
+        text-align: center;
+    }
+    .paybtns {
+        width: 50%;
+        display: flex;
+        margin: 30px auto 30px;
+    }
+    .bottom_links {
+        width: 600px;
+        margin: 10px auto;
+        padding: 0 30px;
+        justify-content: center;
+        display: flex;
+    }
+    .bottom_links .bottom_links_inner {
+        display: inline-flex;
+    }
+    .bottom_links .bottom_links_inner a {
+        padding: 5px 10px;
+    }
+}
+/*PHONE*/
+@media screen and (max-width: 639px) {
+    .order {
+        width: calc(90% - 60px);
+        margin: 20px auto 0;
+        background: #fff;
+        border-radius: 5px;
+        padding: 0 30px;
+        border: 1px solid #b6c6d8;
+    }
+    .header {
+        width: 100%;
+        font-size: 16px;
+        border-bottom: 1px solid #eee;
+        padding: 20px 0;
+        text-align: center;
+    }
+    .paybtns {
+        width: 80%;
+        display: flex;
+        margin: 30px auto 30px;
+    }
+    .bottom_links {
+        width: 50%;
+        margin: 10px auto;
+        padding: 0 30px;
+        justify-content: center;
+        display: flex;
+    }
+    .bottom_links .bottom_links_inner {
+        display: inline-flex;
+    }
+    .bottom_links .bottom_links_inner a {
+        padding: 5px 10px;
+    }
+}
+:root {
+    --qrcode-width: 200px;
+    --qrcode-height: 200px
+}
+.order-info {
+    width: 100%;
+    padding: 20px 0 0;
+}
+.order-info .info {
+    padding: 8px 0;
+    color: #666;
+    font-size: 15px;
+    display: flex;
+    border-bottom: 1px solid #eee;
+}
+.order-info .info_ {
+    display: none;
+}
+.order-info .info .info-title {
+    flex: 1;
+}
+.order-info .info .info-data {
+    flex: 1;
+    text-align: right;
+}
+.paybtns .paybtn {
+    border: none;
+    padding: 8px 20px;
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
+    font-size: 15px;
+    margin: 0 auto;
+    justify-content: center;
+}
+.wxpay {
+    background: #48c063;
+    color: #fff;
+}
+.alipay {
+    background: #007ff2;
+    color: #fff;
+}
+.order_amount {
+    text-align: center;
+    font-size: 40px;
+    margin-top: 30px;
+}
+.you_need_pay_ {
+    font-weight: bold;
+    color: #eb272f;
+}
+.qrcode {
+    width: var(--qrcode-width);
+    height: var(--qrcode-height);
+    margin: 10px auto 0;
+    position: relative;
+}
+.qrcode .qrcode_img {
+    width: var(--qrcode-width);
+    height: var(--qrcode-height);
+}
+.qrcode .qrcode_status_text {
+    width: var(--qrcode-width);
+    height: var(--qrcode-height);
+    position: absolute;
+    text-align: center;
+    line-height: var(--qrcode-height);
+    font-size: 16px;
+    z-index: 99999;
+    color: #eb272f;
+    font-weight: bold;
+}
+.pay_tips {
+    text-align: center;
+    font-size: 15px;
+    color: #666;
+    padding: 15px 0 0;
+}
+.countdown {
+    text-align: center;
+    font-size: 16px;
+    color: #666;
+    padding: 10px 0 30px;
+}
+#countdown_time {
+    color: #eb272f;
+    font-weight: bold;
+}
+.qrcode_blur {
+  filter: blur(3px);
+}
+.bottom_links .link {
+    text-decoration: none;
+    color: #999;
+    font-size: 14px;
+    flex: 1;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.loader {
+    border: 4px solid #f3f3f3;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 0.3s linear infinite;
+    margin: 35px auto;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+.loadding_text {
+    text-align: center;
+    font-size: 15px;
+    margin: 10px auto 30px;
+    display: block;
+    color: #666;
+}
+.clickOtherAmountTips {
+    text-align: center;
+    font-size: 14px;
+    color: #ccc;
+    padding: 10px 0;
+}
+.clickOtherAmountTips span {
+    color: #39f;
+}
