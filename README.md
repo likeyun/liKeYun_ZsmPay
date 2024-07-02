@@ -37,7 +37,7 @@ https://www.qq.com/pay/server/notify.php
 
 2、打开APP，点击右上角+号添加规则，选择通道，按下图输入配置信息。
 
-![](https://img10.360buyimg.com/imgzone/jfs/t1/234778/20/23066/61303/66838b52F2a954ec2/731c238b2796526d.jpg)
+![](https://img10.360buyimg.com/imgzone/jfs/t1/238650/12/12322/47494/66838b52Fe909b433/717e2789dc0f2e31.jpg)
 
 到这里，APP基本完成配置，然后将这个APP的自动启动开启，以及加入电池优化白名单，保证这个APP能一直在后台运行不被杀死。
 
