@@ -10,6 +10,6 @@
     // 例如发送邮件，发送请求bark通知、发送企业微信通知等...
     
     // 例如bark通知URL
-    file_get_contents('https://api.day.app/L2nFzFUFTwqoqHWbAPuNLU/'.$alarm_msg);	
+    file_get_contents('https://api.day.app/xxxxx/'.$alarm_msg);	
     
 ?>
