@@ -29,9 +29,8 @@ https://www.qq.com/pay/server/notify.php
 网盘(访问密码：pppscn)：https://wws.lanzoui.com/b025yl86h <br>
 （建议下载3.2.0版本）
 
-电脑版监听脚本也有，暂不免费提供。
-
-![](https://img10.360buyimg.com/imgzone/jfs/t1/85199/11/47456/109760/6685179eF6570fc9d/38115fa3e9947b90.jpg)
+电脑版监听：https://docs.qq.com/aio/DRGFjSWd4RXV2akFv
+![](https://img10.360buyimg.com/imgzone/jfs/t1/48633/4/25424/18876/66c2e902Fb60f683a/6d9b943964934964.jpg)
 
 监听APP配置
 ---
